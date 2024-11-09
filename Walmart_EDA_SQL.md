@@ -57,7 +57,7 @@ GROUP BY 1;
 ```
 ![image](https://github.com/user-attachments/assets/788bd8ba-2c3e-4327-b27c-1974dda4562c)
 
-2. Identify the highest-rated category in each branch. Display the branch , category and average rating.
+2. Identify the highest-rated category in each branch. Display the branch, category and average rating.
 ```sql
 SELECT
     branch,
@@ -77,5 +77,28 @@ FROM (
 ) AS subquery
 WHERE rnk = 1;
 ```
-3. 
+![image](https://github.com/user-attachments/assets/a35dabbe-6439-4405-bcc6-40289acdb08a)
 
+3. Identify the busiest day of the week for each branch based on the number of transactions.
+``` sql
+SELECT
+ branch,
+ day_name,
+ nr_of_transactions
+FROM (
+ SELECT
+  branch,
+  TO_CHAR(date, 'Day') AS day_name,
+  COUNT(*) AS nr_of_transactions,
+  RANK()OVER(
+    PARTITION BY branch
+    ORDER BY COUNT(*) DESC 
+ )AS rnk
+ FROM walmart
+ GROUP BY 1, 2
+)
+WHERE rnk = 1;
+```
+![image](https://github.com/user-attachments/assets/2a36828d-6c3f-421a-bacd-8631740eab61)
+
+4. Calculate the total quantity of items sold per payment method. List the payment method and total_quantity.
