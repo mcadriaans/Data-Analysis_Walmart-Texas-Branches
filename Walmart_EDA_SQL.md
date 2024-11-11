@@ -309,18 +309,47 @@ WHERE rnk = 1;
 ![image](https://github.com/user-attachments/assets/2a36828d-6c3f-421a-bacd-8631740eab61)
 
 
-<b> ❓ Categorize sales into 3 groups of shifts: Morning, Afternoon and Evening. Find the number of invoices for each shift</b>
+<b> ❓ How many transactions were completed in each shift (Morning, Afternoon, Evening) for each branch at Walmart?</b>
 ```sql
 SELECT
+	branch,
 	CASE
 		WHEN time BETWEEN '06:00:00' AND '11:59:59' THEN 'Morning'
 		WHEN time BETWEEN '12:00:00' AND '17:59:59' THEN 'Afternoon'
 		WHEN time BETWEEN '18:00:00' AND '23:59:59' THEN 'Evening'
 	END AS shift,
-	COUNT(*) AS nr_of_invoices
+	COUNT(*) AS nr_of_transactions
 FROM walmart
-GROUP BY 1;
+GROUP BY 1, 2
+ORDER BY 1, 3 DESC;
 ```
-![image](https://github.com/user-attachments/assets/74e2cb7f-1b09-4d89-820d-df65d6973e3f)
+![image](https://github.com/user-attachments/assets/801e8046-dfe9-4015-a7d4-19a581760e42)
 
+<b> ❓Determine the top 5 branches that experienced the greatest percentage decrease in revenue from 2022 to 2023.</b>
+```sql
+WITH yearly_revenue AS (
+	SELECT
+		branch,
+		EXTRACT(YEAR from date) AS year,
+		SUM(total_revenue) AS total_revenue
+	FROM walmart
+	GROUP BY 1, 2
+	ORDER BY 1
+), compare_revenues AS(
+	SELECT 
+		r1.branch,
+		r1.total_revenue AS total_revenue_2022,
+		r2.total_revenue AS total_revenue_2023,
+		ROUND(((r1.total_revenue - r2.total_revenue) / r1.total_revenue)::NUMERIC * 100 , 2) AS percent_decrease
+	FROM( SELECT * FROM yearly_revenue WHERE year = 2022) AS r1
+	JOIN( SELECT * FROM yearly_revenue WHERE year = 2023) AS r2
+		ON r1.branch = r2.branch
+)
 
+SELECT *
+FROM compare_revenues
+WHERE percent_decrease > 0
+ORDER BY percent_decrease DESC
+LIMIT 5;
+```
+![image](https://github.com/user-attachments/assets/719551f6-713b-459d-aca1-0f940c206e6b)
