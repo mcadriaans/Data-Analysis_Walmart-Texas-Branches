@@ -41,7 +41,9 @@ Here are the concise project steps based on your code:
    - Import the cleaned data into PostgreSQL.
    - Execute basic queries to verify the import.
 
-9. **Exploratory Data Analysis**
-10. **Solving Business Problems**
+8. **Exploratory Data Analysis**
+    - We examine the number of transactions, the count of store branches, the range of quantities sold, and the distribution of payment methods to understand the dataset's structure and key characteristics.
+      
+11. **Solving Business Problems**
     - This phase focuses on applying data insights to answer specific business questions and address critical challenges.
 
