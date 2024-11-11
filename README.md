@@ -36,4 +36,12 @@ Here are the concise project steps based on your code:
 6. **Export clean data:**
    - Save the cleaned DataFrame to a CSV file.
 
-These steps provide a clear and concise workflow for preparing and cleaning the Walmart sales data. If you need further assistance or more details, feel free to ask! 😊
+7. **Data imported to PostgreSQL:**
+   - Set up table in PostgreSQL, define data types.
+   - Import the cleaned data into PostgreSQL.
+   - Execute basic queries to verify the import.
+
+9. **Exploratory Data Analysis**
+10. **Solving Business Problems**
+    - This phase focuses on applying data insights to answer specific business questions and address critical challenges.
+
