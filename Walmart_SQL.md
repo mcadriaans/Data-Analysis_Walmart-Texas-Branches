@@ -44,18 +44,6 @@ FROM walmart
 GROUP BY 1;
 ```
 ![image](https://github.com/user-attachments/assets/199c8f82-e98d-4433-a2cb-a4b5dcd774b7)
-```python
-## Total transactions by payment method
-ax =sns.countplot(x='payment_method', data=df, hue='payment_method')
-
-# Iterate over each bar and display the count value above it
-for p in ax.patches:
-    ax.annotate(f'{p.get_height()}', (p.get_x() + p.get_width() / 2., p.get_height()),
-                ha='center', va='center', xytext=(0, 5), textcoords='offset points')
-    
-plt.show()
-```
-![image](https://github.com/user-attachments/assets/64ad7463-2154-407a-be27-d6573fec0a05)
 
 
 ## Solving Business Problems
