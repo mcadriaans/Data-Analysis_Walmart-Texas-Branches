@@ -2,7 +2,7 @@
 ![image](https://github.com/user-attachments/assets/bcf2bd1d-dbe2-4980-b443-eb80279089ee)
 
 ## About the Project
-This project presents a comprehensive data analysis strategy designed to extract key business insights from Walmart's sales data spanning from January 1, 2019, to December 31, 2023. We employ Python to effectively load, understand, and clean the data. Additionally, we utilize advanced SQL querying to apply structured problem-solving techniques and address significant business challenges.
+This project presents a comprehensive data analysis strategy designed to extract key business insights from Walmart's sales data specifically for the state of Texas spanning from January 1, 2019, to December 31, 2023. We employ Python to effectively load, understand, and clean the data. Additionally, we utilize advanced SQL querying to apply structured problem-solving techniques and address significant business challenges.
 
 This Python code effectively cleans and prepares the "Walmart.csv" data for further analysis. The cleaned data is free of duplicates, missing values, and formatting inconsistencies, and includes a new column for 'total_revenue'. 
 
